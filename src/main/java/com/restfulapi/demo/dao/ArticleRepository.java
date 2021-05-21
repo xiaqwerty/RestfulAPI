@@ -1,4 +1,4 @@
-package com.restfulapi.demo.repository;
+package com.restfulapi.demo.dao;
 
 import com.restfulapi.demo.entity.Article;
 import org.springframework.data.jpa.repository.JpaRepository;

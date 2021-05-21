@@ -1,5 +1,9 @@
 package com.restfulapi.demo.entity.result;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.restfulapi.demo.dao.Views;
+
+
 public class Response
 {
     private String rspCode="200";
@@ -12,11 +16,13 @@ public class Response
     }
     public Response() {}
 
+    @JsonView(Views.Public.class)
     public String getRspCode()
     {
         return rspCode;
     }
 
+    @JsonView(Views.Public.class)
     public String getRspMsg()
     {
         return rspMsg;

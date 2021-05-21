@@ -5,11 +5,17 @@ import com.restfulapi.demo.entity.exception.BusinessException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-/*
-Just for test
+
+import javax.validation.Valid;
+
+
+/*Just for test
 使用RestClient测试
+见/test/java/com/restfulapi/demo/RestTemplateTest
 */
+
 @RestController
 
 public class TestController
@@ -32,13 +38,15 @@ public class TestController
     @GetMapping("/test-getuser")
     public User user1()
     {
-        return new User(1,"myUser");
+        return new User(1,"myUser","123456");
     }
 
-    @Operation(description = "Just for Test")
+    @Operation(description = "Test of Valid User")
     @PostMapping("/test-postuser")
-    public User postUser(User user)
+    public User postUser(@Valid User user, BindingResult result)
     {
+        if(result.hasErrors())
+            throw new BusinessException(601,"User Valid Error");
         System.out.println(user.toString());
         System.out.println("name:"+user.getName());
         System.out.println("id:"+user.getId());

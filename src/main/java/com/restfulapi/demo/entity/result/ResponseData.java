@@ -1,5 +1,8 @@
 package com.restfulapi.demo.entity.result;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.restfulapi.demo.dao.Views;
+
 import java.util.List;
 
 public class ResponseData extends Response
@@ -15,7 +18,7 @@ public class ResponseData extends Response
         super(msg);
         this.data=data;
     }
-
+    @JsonView(Views.Public.class)
     public Object getData()
     {
         return data;

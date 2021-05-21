@@ -1,7 +1,11 @@
 package com.restfulapi.demo.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Subscribe
-{
+{   @Id
     private long id;
     private long A;//关注人
     private long B;//被关注者

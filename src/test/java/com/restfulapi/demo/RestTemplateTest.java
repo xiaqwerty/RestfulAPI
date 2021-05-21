@@ -121,7 +121,6 @@ public class RestTemplateTest
         RestTemplate client=restTemplateBuilder.build();
         MultiValueMap<String,Object> paramMap=new LinkedMultiValueMap<>();//Map得以multivaluemap的形式传递
         paramMap.add("name","longzhiran");
-        paramMap.add("id",4);
         ResponseEntity<User> responseEntity=client.postForEntity("http://localhost:8080/test-postuser",paramMap,User.class);//paramap为post传递的参数
         //尽管post的controller要求的参数是user对象，仍然能正确地使用map传参
         User user=new User();
@@ -165,7 +164,7 @@ public class RestTemplateTest
     {
         RestTemplateBuilder restTemplateBuilder=new RestTemplateBuilder();
         RestTemplate client=restTemplateBuilder.build();
-        User user=new User(1,"name1");
+        User user=new User(1,"name1","123456");
         System.out.println(user.toString());
         /*Map<String,User> map=new HashMap();
         map.put("name",user);*/
@@ -177,7 +176,7 @@ public class RestTemplateTest
     {
         RestTemplateBuilder restTemplateBuilder=new RestTemplateBuilder();
         RestTemplate client=restTemplateBuilder.build();
-        User user=new User(2,"name2");
+        User user=new User(2,"name2","123456");
         client.delete("http://localhost:8080/deleteuser?id={1}",user.getId());
     }
 }

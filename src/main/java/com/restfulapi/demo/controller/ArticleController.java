@@ -1,10 +1,12 @@
 package com.restfulapi.demo.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.restfulapi.demo.dao.Views;
 import com.restfulapi.demo.entity.Article;
 import com.restfulapi.demo.entity.result.ExceptionMsg;
 import com.restfulapi.demo.entity.result.Response;
 import com.restfulapi.demo.entity.result.ResponseData;
-import com.restfulapi.demo.repository.ArticleRepository;
+import com.restfulapi.demo.dao.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +28,9 @@ public class ArticleController
     }
     @Autowired
     private ArticleRepository articleRepository;
+
+
+
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public ResponseData getArticleList()
